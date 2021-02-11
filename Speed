@@ -1,0 +1,40 @@
+warrent = ["Bob", "Jack", "John", "Nick", "Will", "Bird", "From"]
+while True:
+    name = input("What is your name? : ").capitalize()
+    if name in warrent:
+        print("{}, you were caught speeding in a 100km/h zone".format(name))
+        while True:
+            try:
+                speed = float(input("What was your average speed? (numbers only) : "))
+                if speed > 100 and speed < 150:
+                    punishment = "{}, You owe a fine of ${:.2f}".format(name, 10 * round(speed - 100))
+                    break
+                elif speed >= 150 and speed <= 180:
+                    punishment = "{}, your license is gone *crab rave*".format(name)
+                    break
+                elif speed > 180:
+                    punishment = "Hey {}, Jail time :)".format(name)
+                    break
+                elif speed <=100 and speed >= 0:
+                    punishment = "Sorry {}, our bad. You're good to go".format(name)
+                    break
+                else:
+                    print("IMPOSSIBLE")
+                    continue               
+            except ValueError:
+                print("Plz enter numba")
+                break 
+        break
+            
+    elif name == "N" :
+        print("These are the people in for a warrent : ")
+        print(warrent)
+        continue
+        
+    else: 
+        print("{}, You don't have a warrent, you're free to go".format(name))
+        exit()
+
+        
+#prints their punishment    
+print(punishment)
