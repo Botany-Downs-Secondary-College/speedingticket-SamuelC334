@@ -1,0 +1,60 @@
+"""This file creates a to-do list"""
+
+tasks = ["Eat", "Sleep", "Rush B", "Repeat"]
+
+def space():
+    print("")
+    
+def menu(x):
+    mode = ["Add a task", "View list", "Exit"]
+    print("Choose a mode by entering a number")
+    i = 0
+    while i < len(mode):
+        print("{}. {}".format(i + 1, mode[i]))
+        i += 1
+
+    while True:
+        try:
+            choice = int(input(x))
+            if choice == 1 or choice == 2 or choice == 3:
+                return choice
+            else:
+                print("IMPOSSIBLE")
+                continue
+        except ValueError:
+            print("Not a number grr")
+            continue
+    
+def add_task():
+    while True:
+        test = input("Add an item to your list, or type \"exit\" to return to menu : ").lower().capitalize()
+        if test != "Exit":
+            tasks.append(test)
+            continue
+        else:
+            space()
+            break
+    
+def view_list():
+    print("List:")
+    a = 0
+    while a < len(tasks):
+        print("{})".format(a + 1), tasks[a])
+        a += 1
+    space()
+
+def execute():       
+    while True:
+        choice = menu("pick : ")
+        print("")
+        if choice == 1:
+            add_task()
+            continue
+        elif choice == 2:
+            view_list()
+            continue
+        else:
+            print("cya")
+            exit()
+            
+execute()
